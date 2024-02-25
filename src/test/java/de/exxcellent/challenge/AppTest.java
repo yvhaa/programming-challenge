@@ -32,9 +32,9 @@ class AppTest {
     @BeforeEach
     void setUp() {
         //Setup a Model for to test if the controller finds the day with the maximum temperature spread
-         this.mockBackend1 = new Model() {
+         this.mockBackend1 = new Model<List<WeatherDataPoint>>() {
             @Override
-            public List<WeatherDataPoint> getWeatherData() {
+            public List<WeatherDataPoint> getData() {
                 return new ArrayList<>(Arrays.asList(
                         new WeatherDataPoint(1,30,20),
                         new WeatherDataPoint(2,25,20),
@@ -47,9 +47,9 @@ class AppTest {
         };
 
          //Setup a Model to test if the controller deals with no available data correctly
-        this.mockBackend2 = new Model() {
+        this.mockBackend2 = new Model<List<WeatherDataPoint>>() {
             @Override
-            public List<WeatherDataPoint> getWeatherData() {
+            public List<WeatherDataPoint> getData() {
                 return new ArrayList<>();
             }
         };
@@ -65,7 +65,7 @@ class AppTest {
      */
     @Test
     void testMaximumTempSpreadOfEmptyArray() {
-        assertThrows(InvalidDataException.class, () -> {this.controller2.getDayWithMaxTempSpread();});
+        assertThrows(InvalidDataException.class, () -> {this.controller2.calculate();});
     }
 
     /**
@@ -75,7 +75,7 @@ class AppTest {
     @Test
     void testMaximumTempSpreadOfArray() {
         try {
-            assertEquals(4, this.controller1.getDayWithMaxTempSpread());
+            assertEquals(4, this.controller1.calculate());
         } catch (InvalidDataException e) {
             throw new RuntimeException(e);
         }

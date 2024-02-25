@@ -6,11 +6,11 @@ import de.exxcellent.challenge.model.Model;
 
 import java.util.List;
 
-public class WeatherDataController implements Controller{
+public class WeatherDataController implements Controller<Integer>{
 
-    private final Model weatherDatamodel;
+    private final Model<List<WeatherDataPoint>> weatherDatamodel;
 
-    public WeatherDataController(final Model model) {
+    public WeatherDataController(final Model<List<WeatherDataPoint>> model) {
         this.weatherDatamodel = model;
     }
 
@@ -20,8 +20,8 @@ public class WeatherDataController implements Controller{
      * @throws InvalidDataException when no maximum can be found, e.g. if the list of data points is empty
      */
     @Override
-    public int getDayWithMaxTempSpread() throws InvalidDataException{
-        List<WeatherDataPoint> dataPoints = this.weatherDatamodel.getWeatherData();
+    public Integer calculate() throws InvalidDataException{
+        List<WeatherDataPoint> dataPoints = this.weatherDatamodel.getData();
         return dataPoints.stream().max((var dp1, var dp2) -> {
             int tempDiffDp1 = dp1.getMaxTemp() - dp1.getMinTemp();
             int tempDiffDp2 = dp2.getMaxTemp() - dp2.getMinTemp();

@@ -12,7 +12,7 @@ import java.io.Reader;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class WeatherDataModel implements Model{
+public class WeatherDataModel implements Model<List<WeatherDataPoint>>{
 
     private final List<WeatherDataPoint> records;
 
@@ -48,7 +48,7 @@ public class WeatherDataModel implements Model{
      * @return a List with all weather data points
      */
     @Override
-    public List<WeatherDataPoint> getWeatherData() {
+    public List<WeatherDataPoint> getData() {
         return this.records.stream().map(WeatherDataPoint::deepCopy).collect(Collectors.toList());
     }
 }

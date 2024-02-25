@@ -46,7 +46,7 @@ public final class App {
      */
     private void run() {
         try {
-            this.weatherDataView.printWeatherDataTempSpreadMax();
+            this.weatherDataView.printData();
         } catch (InvalidDataException e) {
             System.err.println("Data has invalid format.");
             System.exit(2);

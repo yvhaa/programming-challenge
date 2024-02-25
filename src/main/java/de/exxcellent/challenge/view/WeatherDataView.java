@@ -5,9 +5,9 @@ import de.exxcellent.challenge.exceptions.InvalidDataException;
 
 public class WeatherDataView implements View{
 
-    private Controller controller;
+    private Controller<Integer> controller;
 
-    public WeatherDataView(Controller controller) {
+    public WeatherDataView(Controller<Integer> controller) {
         this.controller = controller;
     }
 
@@ -17,7 +17,7 @@ public class WeatherDataView implements View{
      * @throws InvalidDataException when the Controller::getDayWithMaxTempSpread() method throws an InvalidDataException
      */
     @Override
-    public void printWeatherDataTempSpreadMax() throws InvalidDataException {
-        System.out.println(this.controller.getDayWithMaxTempSpread());
+    public void printData() throws InvalidDataException {
+        System.out.println(this.controller.calculate());
     }
 }
