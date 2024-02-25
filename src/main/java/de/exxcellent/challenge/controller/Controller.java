@@ -2,8 +2,8 @@ package de.exxcellent.challenge.controller;
 
 import de.exxcellent.challenge.exceptions.InvalidDataException;
 
-public interface Controller {
+public interface Controller<T> {
 
-    public int getDayWithMaxTempSpread()  throws InvalidDataException;
+    public T calculate()  throws InvalidDataException;
 
 }

@@ -4,8 +4,8 @@ import de.exxcellent.challenge.enities.WeatherDataPoint;
 
 import java.util.List;
 
-public interface Model {
+public interface Model<T> {
 
-    public List<WeatherDataPoint> getWeatherData();
+    public T getData();
 
 }
