@@ -1,6 +1,6 @@
 package de.exxcellent.challenge.enities;
 
-public class WeatherDataPoint {
+public class WeatherDataPoint implements DeepCopyable<WeatherDataPoint>{
     private int numOfDay;
     private int maxTemp;
     private int minTemp;
